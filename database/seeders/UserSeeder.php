@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $user->name = 'yonatan david vides centeno';
         $user->post = 'Administrador';
         $user->phone_number = '3134213189';
-        $user->email = 'yonatanvides04@gmail.com';
+        $user->usuario = 'yonatanvides04@gmail.com';
         $user->password = bcrypt('12345678');
         $user->state = 'activo';
 
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         $user->name = 'Charamusca mortal';
         $user->post = 'Asesor';
         $user->phone_number = '01800911911';
-        $user->email = 'charamusca@example.com';
+        $user->usuario = 'charamusca@example.com';
         $user->password = bcrypt('12345678');
         $user->state = 'activo';
 

@@ -8,8 +8,8 @@
     <div class="nav-logo">
       <a style="text-decoration: none; display: flex; align-items: center" href="#">
 
-        <img src="{{ asset('asset/images/logo.png') }}" />
-        <span> Funeraria Previcesar SAS</span>
+        <img src="" />
+        <span> Prueba</span>
       </a>
     </div>
     <ul class="nav-links">

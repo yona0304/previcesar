@@ -13,7 +13,7 @@
     <section class="inicio">
         <div class="porta2">
             <div class="form-container">
-                <form action="" method="POST" class="form" onsubmit="return validarInicioSesion()">
+                <form action="{{ route('login') }}" method="POST" class="form" onsubmit="return validarInicioSesion()">
                     @csrf
                     <p>Iniciar Sesión</p>
                     <div>
@@ -22,7 +22,7 @@
                     </div>
                     <div>
                         <label for="contrasena">Contraseña:</label>
-                        <input type="password" id="contrasena" name="contrasena" class="input" placeholder="Contraseña"/>
+                        <input type="password" id="contrasena" name="password" class="input" placeholder="Contraseña"/>
                     </div>
                     <button type="submit">Iniciar Sesión</button>
                 </form>

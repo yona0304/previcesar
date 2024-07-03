@@ -25,18 +25,17 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Llenar con datos dinámicamente -->
-            {{-- {% for row in data %} --}}
-            <tr>
-                <td>CC</td>
-                <td>1096</td>
-                <td>Yona</td>
-                <td>Administrador</td>
-                <td>3134213189</td>
-                <td>Yonatanvides04@gmail.com</td>
-                <td>Activo</td>
-            </tr>
-            {{-- {% endfor %} --}}
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{ $user->type }}</td>
+                    <td>{{ $user->identification }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->post }}</td>
+                    <td>{{ $user->phone_number }}</td>
+                    <td>{{ $user->usuario }}</td>
+                    <td>{{ $user->state }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 
@@ -52,26 +51,26 @@
                 </div>
                 <div class="modal-body">
                     <!-- Asegura que el formulario tenga el atributo action y el método POST -->
-                    <form id="formularioTrabajador" action="" method="POST">
+                    <form id="formularioTrabajador" action="{{ route('trabajadores.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <!-- Primera columna -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tipo_id">Tipo ID</label>
-                                    <input type="text" class="form-control" id="tipo_id" name="tipo_id" required>
+                                    <input type="text" class="form-control" id="tipo_id" name="type" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="numero_id">Número ID</label>
-                                    <input type="number" class="form-control" id="numero_id" name="numero_id" required>
+                                    <input type="number" class="form-control" id="numero_id" name="identification" required>
                                 </div>
                                 <div class="form-group">
                                     <label para="nombres">Nombres</label>
-                                    <input type="text" class="form-control" id="nombres" name="nombres" required>
+                                    <input type="text" class="form-control" id="nombres" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label para="correo">Correo</label>
-                                    <input type="email" class="form-control" id="correo" name="correo" required>
+                                    <input type="email" class="form-control" id="correo" name="usuario" required>
                                 </div>
                             </div>
     
@@ -79,11 +78,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label para="cargo">Cargo</label>
-                                    <input type="text" class="form-control" id="cargo" name="cargo" required>
+                                    <input type="text" class="form-control" id="cargo" name="post" required>
                                 </div>
                                 <div class="form-group">
                                     <label para="telefono">Telefono</label>
-                                    <input para="number" class="form-control" id="telefono" name="telefono" required>
+                                    <input para="number" class="form-control" id="telefono" name="phone_number" required>
                                 </div>
                                 {{-- <div class="form-group">
                                     <label para="auxt">Auxilio de Transporte</label>
@@ -91,7 +90,7 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <label para="estado">Estado</label>
-                                    <input para="text" class="form-control" id="estado" name="estado" required>
+                                    <input para="text" class="form-control" id="estado" name="state" required>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +119,7 @@
                 search: true,
                 filterControl: true,
                 pagination: true,
-                pageSize: 10,
+                pageSize: 7,
                 filterControlsLocale: {
                     searchPlaceholder: 'Buscar',
                     applyFilterText: 'Aplicar',
@@ -150,4 +149,43 @@
             background-color: #3cb3c3;
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            $('#formularioTrabajador').on('submit', function (e) {
+                e.preventDefault();
+    
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        // Cierra el modal
+                        $('#agregarModal').modal('hide');
+
+                        // Mostrar la alerta
+                        Swal.fire({
+                            title: "¡Buen Trabajo!",
+                            text: "Datos guardados correctamente",
+                            icon: "success",
+                            timer: 2000, // Tiempo en milisegundos
+                            showConfirmButton: false
+                        });
+
+                        // Esperar 2 segundos antes de recargar la página
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+    
+                        // Recarga la página
+                        // location.reload();
+                    },
+                    error: function (response) {
+                        // Manejar errores aquí
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script>
+    
 </div>

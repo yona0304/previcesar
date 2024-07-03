@@ -1,35 +1,35 @@
 <link rel="stylesheet" href="{{ asset('asset/css/benefici.css') }}">
 <div class="container">
-    <form action="#" method="POST">
+    <form action="{{ route('contracts.store') }}" method="POST">
         @csrf
         <h3>Contrato</h3>
         <div class="row">
             <div class="col">
                 <label>N° contrato</label>
-                <input type="text" class="form-control" placeholder="ASD6576AD">
+                <input name="n_contract" type="text" class="form-control" placeholder="ASD6576AD">
             </div>
             <div class="col">
                 <label>Fecha Afiliación</label>
-                <input type="date" class="form-control">
+                <input name="affiliation_date" type="date" class="form-control">
             </div>
             <div class="col">
                 <label>$ Cuota</label>
-                <input type="number" class="form-control" placeholder="Valor">
+                <input name="quota_value" type="number" class="form-control" placeholder="Valor">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label>Sitio Emisión</label>
-                <input type="text" class="form-control" placeholder="Barrio/Vereda">
+                <input name="site_issuance" type="text" class="form-control" placeholder="Barrio/Vereda">
             </div>
             <div class="col">
                 <label>Asesor</label>
-                <input type="text" class="form-control">
+                <input name="advisor" type="text" class="form-control">
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="periodo_pago">Periodo pago</label>
-                    <select class="form-control" id="periodo_pago" name="periodo_pago">
+                    <select name="payment_period" class="form-control" id="periodo_pago">
                         <option value="mensual">Mensual</option>
                         <option value="quincenal">Quincenal</option>
                         <option value="semanal">Semanal</option>
@@ -42,29 +42,29 @@
         <div class="row">
             <div class="col">
                 <label>N° Documento</label>
-                <input type="number" class="form-control" placeholder="123456789">
+                <input name="holder_identification" type="number" class="form-control" placeholder="123456789">
             </div>
             <div class="col">
                 <label>Nombre y Apellidos</label>
-                <input type="text" class="form-control" placeholder="xxxxxx xxxxxx xxxxxxx">
+                <input name="holder_name" type="text" class="form-control" placeholder="xxxxxx xxxxxx xxxxxxx">
             </div>
             <div class="col">
                 <label>Fecha Nacimiento</label>
-                <input type="date" class="form-control">
+                <input name="holder_date_of_birth" type="date" class="form-control">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label>Telefono</label>
-                <input type="number" class="form-control" placeholder="123456789">
+                <input name="holder_phone_number" type="number" class="form-control" placeholder="123456789">
             </div>
             <div class="col">
                 <label>Dirección</label>
-                <input type="text" class="form-control" placeholder="Barrio/Vereda">
+                <input name="holder_address" type="text" class="form-control" placeholder="Barrio/Vereda">
             </div>
             <div class="col">
                 <label>Lugar Expedición</label>
-                <input type="text" class="form-control" placeholder="Ciudad de expedición">
+                <input name="holder_shipping_location" type="text" class="form-control" placeholder="Ciudad de expedición">
             </div>
         </div>
         <hr>
@@ -72,7 +72,6 @@
         <div class="floating-buttons">
             <button id="btnConsulta" type="button">Agregar Beneficiarios</button>
         </div>
-        
         
         <div class="floating-form" id="floatingForm">
             <h3>Beneficiarios</h3>
@@ -89,17 +88,17 @@
             </div>
         
             <div id="beneficiarios_container">
-                <div class="row" class="newgrupinput">
+                <div class="row newgrupinput">
                     <div class="col">
-                        <input type="number" class="form-control" name="documento[]" placeholder="N° documento"/>
+                        <input type="number" class="form-control" name="beneficiaries[0][identification]" placeholder="N° documento"/>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" name="nombre_completo[]" placeholder="Nombre Completo"/>
+                        <input type="text" class="form-control" name="beneficiaries[0][name]" placeholder="Nombre Completo"/>
                     </div>
                     <div class="col">
-                        <input type="date" class="form-control" name="fecha_naci[]" placeholder="Fecha nacimiento" />
+                        <input type="date" class="form-control" name="beneficiaries[0][date_of_birth]" placeholder="Fecha nacimiento" />
                     </div>
-                    <button class="eliminar" type="button">-</ion-icon></button>
+                    <button class="eliminar" type="button">-</button>
                 </div>
             </div>
             <br/>

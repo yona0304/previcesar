@@ -6,13 +6,13 @@ document.getElementById('agregar').addEventListener('click', function() {
     newInputGroup.classList.add('row', 'newgrupinput'); // Añade la clase 'row' y 'newgrupinput'
     newInputGroup.innerHTML = `
         <div class="col">
-            <input type="number" class="form-control" name="documento[]" placeholder="N° documento"/>
+            <input type="number" class="form-control" name="beneficiaries[${beneficiaryIndex}][identification]" placeholder="N° documento"/>
         </div>
         <div class="col">
-            <input type="text" class="form-control" name="nombre_completo[]" placeholder="Nombre Completo"/>
+            <input type="text" class="form-control" name="beneficiaries[${beneficiaryIndex}][name]" placeholder="Nombre Completo"/>
         </div>
         <div class="col">
-            <input type="date" class="form-control" name="fecha_naci[]" placeholder="Fecha nacimiento" />
+            <input type="date" class="form-control" name="beneficiaries[${beneficiaryIndex}][date_of_birth]" placeholder="Fecha nacimiento" />
         </div>
         <button class="eliminar">-</button>
     `;
