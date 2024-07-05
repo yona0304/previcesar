@@ -10,11 +10,12 @@ class Beneficiary extends Model
     use HasFactory;
 
     protected $beneficiary = [
-        'contract_id',
         'identification',
         'name',
         'date_of_birth',
         'state',
+        'n_contract',
+        'role',
     ];
 
     public function contract()

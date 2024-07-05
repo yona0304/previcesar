@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ asset('asset/css/benefici.css') }}">
 <div class="container">
-    <form action="{{ route('contracts.store') }}" method="POST">
+    <form id="formuContrato" action="{{ route('contracts.store') }}" method="POST">
         @csrf
         <h3>Contrato</h3>
         <div class="row">
@@ -107,5 +107,43 @@
         <button type="submit">Registrar Contrato</button>
     </form>
 </div>
+<script>
+    $(document).ready(function () {
+    $('#formuContrato').on('submit', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function (response) {
+                // Cierra el modal
+                // $('#agregarModal').modal('hide');
+
+                // Mostrar la alerta
+                Swal.fire({
+                    title: "¡Buen Trabajo!",
+                    text: "Contrato guardado correctamente",
+                    icon: "success",
+                    timer: 2000, // Tiempo en milisegundos
+                    showConfirmButton: false
+                });
+
+                // Esperar 2 segundos antes de recargar la página
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+
+                // Recarga la página
+                // location.reload();
+            },
+            error: function (response) {
+                // Manejar errores aquí
+                console.log(response);
+            }
+        });
+    });
+});
+</script>
 
 <script src="{{ asset('asset/js/incremento.js') }}"></script>

@@ -24,9 +24,7 @@ Route::get('/administrador', [UserController::class, 'index'])->name('administra
 Route::post('/trabajadores', [UserController::class, 'store'])->name('trabajadores.store');
 
 //parte de crear el nuevo contrato.
-// Route::get('/administrador', [ContractController::class, 'create'])->name('administrator');
-Route::post('/contracts', [ContractController::class, 'store'])->name('contracts.store');
-// Route::get('/administrador', [ContractController::class, 'create'])->name('administrator');
+Route::post('/contract', [ContractController::class, 'contrato'])->name('contracts.store');
 
 
 // Route::get('prueba', function(){

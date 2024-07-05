@@ -9,8 +9,7 @@ class Holder extends Model
 {
     use HasFactory;
 
-    protected $holder = [
-        'contract_id',
+    protected $fillable = [
         'identification',
         'name',
         'date_of_birth',
@@ -18,6 +17,8 @@ class Holder extends Model
         'address',
         'shipping_location',
         'state',
+        'n_contract',
+        'role',
     ];
 
     public function contract()
